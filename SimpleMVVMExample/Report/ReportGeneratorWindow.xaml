@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="DocumentGenerator.ReportGeneratorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:conv="clr-namespace:DocumentGenerator"
+        mc:Ignorable="d" Height="670">
+    <UserControl.Resources>
+        <conv:TestReportItemTypeToImageConverter x:Key="conv"/>
+        <Style TargetType="Button" x:Key="PopUpButton">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Margin" Value="10 0"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Border Padding="15" Background="Azure">
+
+        <StackPanel>
+            <Popup AllowsTransparency="True" IsOpen="{Binding PopUpVisible}" x:Name="SettingsPopUp" Placement="Mouse">
+                <StackPanel Background="White">
+                    <Label Grid.Row="1" Grid.Column="1" Content="Directory path to Data" Margin="20 20 20 0"/>
+                    <TextBox
+                        Width="400" 
+                        Height="30" 
+                        Margin="20 0 20 5"/>
+
+                    <TextBox Width="200" Height="500"></TextBox>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="15">
+                        <Button Command="{Binding UpdateFileDirectoryPathCommand}" Content="Update" Style="{StaticResource PopUpButton}"/>
+                        <Button Command="{Binding ShowPopUpCommand}" Content="Cancel" Style="{StaticResource PopUpButton}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Popup>
+
+            <Button Content="Update Settings" Command="{Binding ShowPopUpCommand, UpdateSourceTrigger=PropertyChanged}"/>
+            <!-- Client Name-->
+            <TextBlock  Padding="0 5" Text="Client Name"/>
+            <TextBox  x:Name="Customer" Padding="5" 
+                      Text="{Binding Customer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                
+            </TextBox>
+
+            <!-- Client Address-->
+            <TextBlock  Padding="0 5" Text="Client Address"/>
+            <TextBox  x:Name="Address" Padding="5" TextWrapping="Wrap" Height="90" AcceptsReturn="True"
+                      Text="{Binding Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                
+            </TextBox>
+            <!-- Project Number -->
+            <TextBlock Padding="0 5" Text="Project Number"/>
+            <TextBox x:Name="Project" Padding="5" 
+                     Text="{Binding Project, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                
+            </TextBox>
+
+            <!-- Report Title -->
+            <TextBlock Padding="0 5" Text="Report Title"/>
+            <TextBox x:Name="title" Padding="5" 
+                     Text="{Binding ReportTitle, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
+            
+            <!-- Select Tests-->
+            <TextBlock  Padding="0 5" Text="Select Tests" FontWeight="Bold"/>
+            <Border Padding="10" x:Name="TestBox" Height="260" BorderThickness="1" BorderBrush="#aaa" >
+                <StackPanel>
+                    <ComboBox ItemsSource="{Binding TestList}" 
+                              SelectedItem="{Binding SelectedTest, Mode=TwoWay}"
+                              DisplayMemberPath="Title"
+                              />
+                    <Button Command="{Binding AddTestsCommand}" Content="Add" Width="100" Margin="0 10 0 10"/>
+                    <!-- List of Test Standards -->
+                    <TextBlock Text="List of Test Standards"/>
+                    <ListBox SelectedItem="{Binding SelectedListItem, UpdateSourceTrigger=PropertyChanged}" 
+                             ItemsSource="{Binding ChosenTests, UpdateSourceTrigger=PropertyChanged}"
+                             Height="130">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel Orientation="Horizontal">
+                                    <Image Source="{Binding ReportItemType, Converter={StaticResource conv}}" Height="15"/>
+                                    <TextBlock Text="{Binding Title}" Padding=" 5 0 0 0"/>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Button Command="{Binding RemoveTestCommand}" Content="Remove" Width="100" Margin="0 10 0 10"/>
+                </StackPanel>
+            </Border>
+            <!-- Create Report Button -->
+            <Button Command="{Binding CreateReportCommand}" Margin="0 15" Content="Create Report"/>
+        </StackPanel>
+    </Border>
+    
+</UserControl>
