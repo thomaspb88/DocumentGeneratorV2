@@ -9,11 +9,8 @@
         <DataTemplate DataType="{x:Type local:HomeViewModel}">
             <local:HomeView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type local:ProductsViewModel}">
-            <local:ProductsView />
-        </DataTemplate>
         <DataTemplate DataType="{x:Type local:ReportGeneratorViewModel}">
-            <local:ReportGeneratorWindow />
+            <local:ReportGeneratorWindow/>
         </DataTemplate>
         <Style TargetType="Button" x:Key="MenuButton">
             <Setter Property="Background" Value="White"/>

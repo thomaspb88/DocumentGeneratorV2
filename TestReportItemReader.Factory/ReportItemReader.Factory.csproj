@@ -46,10 +46,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TestReportItemRepository.XML\ReportItemReader.XML.csproj">
-      <Project>{7d64a4e2-ac9f-48a2-a53f-f73592e3479f}</Project>
-      <Name>ReportItemReader.XML</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TestreportReader.Interface\ReportItemReader.Interface.csproj">
       <Project>{F073A4D4-B37D-4D0F-9179-CB1EEA190EC7}</Project>
       <Name>ReportItemReader.Interface</Name>

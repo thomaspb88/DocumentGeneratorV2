@@ -17,28 +17,10 @@
     <Border Padding="15" Background="Azure">
 
         <StackPanel>
-            <Popup AllowsTransparency="True" IsOpen="{Binding PopUpVisible}" x:Name="SettingsPopUp" Placement="Mouse">
-                <StackPanel Background="White">
-                    <Label Grid.Row="1" Grid.Column="1" Content="Directory path to Data" Margin="20 20 20 0"/>
-                    <TextBox
-                        Width="400" 
-                        Height="30" 
-                        Margin="20 0 20 5"/>
-
-                    <TextBox Width="200" Height="500"></TextBox>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="15">
-                        <Button Command="{Binding UpdateFileDirectoryPathCommand}" Content="Update" Style="{StaticResource PopUpButton}"/>
-                        <Button Command="{Binding ShowPopUpCommand}" Content="Cancel" Style="{StaticResource PopUpButton}"/>
-                    </StackPanel>
-                </StackPanel>
-            </Popup>
-
-            <Button Content="Update Settings" Command="{Binding ShowPopUpCommand, UpdateSourceTrigger=PropertyChanged}"/>
             <!-- Client Name-->
             <TextBlock  Padding="0 5" Text="Client Name"/>
             <TextBox  x:Name="Customer" Padding="5" 
                       Text="{Binding Customer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                
             </TextBox>
 
             <!-- Client Address-->
@@ -51,7 +33,6 @@
             <TextBlock Padding="0 5" Text="Project Number"/>
             <TextBox x:Name="Project" Padding="5" 
                      Text="{Binding Project, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                
             </TextBox>
 
             <!-- Report Title -->
@@ -67,7 +48,7 @@
                               SelectedItem="{Binding SelectedTest, Mode=TwoWay}"
                               DisplayMemberPath="Title"
                               />
-                    <Button Command="{Binding AddTestsCommand}" Content="Add" Width="100" Margin="0 10 0 10"/>
+                    <Button Command="{Binding AddToListCommand}" Content="Add" Width="100" Margin="0 10 0 10"/>
                     <!-- List of Test Standards -->
                     <TextBlock Text="List of Test Standards"/>
                     <ListBox SelectedItem="{Binding SelectedListItem, UpdateSourceTrigger=PropertyChanged}" 

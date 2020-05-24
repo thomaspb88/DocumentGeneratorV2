@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿using GalaSoft.MvvmLight.CommandWpf;
 using Report.Components;
 using ReportItemReader.Interface;
 using System.Collections.ObjectModel;
@@ -47,6 +47,7 @@ namespace DocumentGenerator
             set
             {
                 _chosenTests = value;
+                OnPropertyChanged("ChosenTests");
             }
         }
         #endregion
@@ -60,7 +61,7 @@ namespace DocumentGenerator
             set 
             { 
                 _selectedTest = value;
-                RaisePropertyChanged("SelectedTest");
+                OnPropertyChanged("SelectedTest");
             }
         }
         #endregion
@@ -74,7 +75,7 @@ namespace DocumentGenerator
             set
             {
                 _selectedListItem = value;
-                RaisePropertyChanged("SelectedListItem");
+                OnPropertyChanged("SelectedListItem");
             }
         }
 
@@ -92,7 +93,7 @@ namespace DocumentGenerator
                 if (_customer != value)
                 {
                     _customer = value;
-                    RaisePropertyChanged("Customer");
+                    OnPropertyChanged("Customer");
                 }
             }
         }
@@ -109,7 +110,7 @@ namespace DocumentGenerator
             set 
             { 
                 _project = value;
-                RaisePropertyChanged("Project");
+                OnPropertyChanged("Project");
             }
         }
 
@@ -124,7 +125,7 @@ namespace DocumentGenerator
             set 
             { 
                 _address = value;
-                RaisePropertyChanged("Address");
+                OnPropertyChanged("Address");
             }
         }
         #endregion
@@ -138,7 +139,7 @@ namespace DocumentGenerator
             set 
             { 
                 _reportTitle = value;
-                RaisePropertyChanged("ReportTitle");
+                OnPropertyChanged("ReportTitle");
             }
         }
         #endregion
