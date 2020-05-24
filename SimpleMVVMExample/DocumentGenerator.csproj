@@ -114,7 +114,6 @@
     </Compile>
     <Compile Include="Products\ProductsViewModel.cs" />
     <Compile Include="IPageViewModel.cs" />
-    <Compile Include="Report\PopulateReportComponent.cs" />
     <Compile Include="Report\ReportGeneratorViewModel.cs" />
     <Compile Include="Report\ReportGeneratorWindow.xaml.cs">
       <DependentUpon>ReportGeneratorWindow.xaml</DependentUpon>
@@ -214,6 +213,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ReportItemReader.XML\ReportItemReader.XML.csproj">
+      <Project>{7d64a4e2-ac9f-48a2-a53f-f73592e3479f}</Project>
+      <Name>ReportItemReader.XML</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestReport.Components\Report.Components.csproj">
       <Project>{e5f3af3b-cea8-46b8-99d2-09802dd6459b}</Project>
       <Name>Report.Components</Name>

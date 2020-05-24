@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.CommandWpf;
 using ReportItemReader.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 

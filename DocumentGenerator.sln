@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportItemReader.Factory", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentGenerator", "SimpleMVVMExample\DocumentGenerator.csproj", "{0D6370B0-B6A8-4C62-B726-8F8AE51B0880}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportItemReader.XML", "ReportItemReader.XML\ReportItemReader.XML.csproj", "{7D64A4E2-AC9F-48A2-A53F-F73592E3479F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +62,14 @@ Global
 		{0D6370B0-B6A8-4C62-B726-8F8AE51B0880}.Release|Any CPU.ActiveCfg = Release|x86
 		{0D6370B0-B6A8-4C62-B726-8F8AE51B0880}.Release|x86.ActiveCfg = Release|x86
 		{0D6370B0-B6A8-4C62-B726-8F8AE51B0880}.Release|x86.Build.0 = Release|x86
+		{7D64A4E2-AC9F-48A2-A53F-F73592E3479F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D64A4E2-AC9F-48A2-A53F-F73592E3479F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D64A4E2-AC9F-48A2-A53F-F73592E3479F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7D64A4E2-AC9F-48A2-A53F-F73592E3479F}.Debug|x86.Build.0 = Debug|Any CPU
+		{7D64A4E2-AC9F-48A2-A53F-F73592E3479F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D64A4E2-AC9F-48A2-A53F-F73592E3479F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D64A4E2-AC9F-48A2-A53F-F73592E3479F}.Release|x86.ActiveCfg = Release|Any CPU
+		{7D64A4E2-AC9F-48A2-A53F-F73592E3479F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

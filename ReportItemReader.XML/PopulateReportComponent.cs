@@ -1,14 +1,13 @@
-﻿using Report.Components;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
+using Report.Components;
 
-namespace DocumentGenerator
+namespace ReportItemReader.XML
 {
     public static class PopulateReportComponent
     {
-        //TODO Move this logic into each report component. Here
 
         private static Func<IReportComponent, XmlNode, IReportComponent> ParseText = (t, x) =>
         {
@@ -44,7 +43,7 @@ namespace DocumentGenerator
             return new ReportComponentNull();
         };
 
-        private static Func<IReportComponent, XmlNode, IReportComponent> ParseDefault = (t, x) =>
+        private static Func<IReportComponent, XmlNode, IReportComponent> ParseNull = (t, x) =>
         {
             return new ReportComponentNull();
         };
@@ -52,17 +51,21 @@ namespace DocumentGenerator
         private static Dictionary<ReportComponentType, Func<IReportComponent, XmlNode, IReportComponent>> parsingFunctions
             = new Dictionary<ReportComponentType, Func<IReportComponent, XmlNode, IReportComponent>>()
             {
-                { ReportComponentType.Title, ParseText },
+                { ReportComponentType.Header, ParseText },
                 { ReportComponentType.List, ParseList },
                 { ReportComponentType.Text, ParseText },
                 { ReportComponentType.Reference, ParseText },
                 { ReportComponentType.Subtitle, ParseText },
                 { ReportComponentType.Table, ParseTable },
-                { ReportComponentType.Default, ParseDefault }
+                { ReportComponentType.Null, ParseNull }
             };
 
-        public static IReportComponent ParseXmlNode(XmlNode node, ref IReportComponent component)
+        internal static IReportComponent ParseXmlNode(XmlNode node, ref IReportComponent component)
         {
+            string TypeOfComponent = node.Attributes["type"].Value;
+
+            component.TypeOfComponent = Enum.TryParse(TypeOfComponent, out ReportComponentType reportTypComponent) ? reportTypComponent : ReportComponentType.Null;
+
             var func = parsingFunctions[component.TypeOfComponent];
 
             return func(component, node);

@@ -11,6 +11,7 @@ namespace DocumentGenerator
         //IReportItemReader repo = ReportItemReaderFactory.GetRepository();
         protected IReportItemReader DataReader;
 
+
         #region Property - Test List for Combobox
 
         public ObservableCollection<ReportComponentBody> TestList
@@ -155,12 +156,20 @@ namespace DocumentGenerator
         public ReportGeneratorViewModel(IReportItemReader reader)
         {
             DataReader = reader;
+            DataReader.Notification += DataReader_Notification;
             DataReader.Load(FileDirectoryPath);
+            var list = DataReader.GetAllReportItems();
 
             _chosenTests = new ObservableCollection<ReportComponentBody>();
             AddToListCommand = new RelayCommand(() => ExecuteAddTestsToListCommand(), () => CanExecuteAddToListCommand());
             RemoveTestCommand = new RelayCommand(() => ExecuteRemoveFromListCommand(), () => CanExecuteRemoveFromListCommand());
             CreateReportCommand = new RelayCommand(() => ExecuteCreateReportCommand(), () => CanExecuteCreateReportCommand());
+        }
+
+        private void DataReader_Notification(object sender, ReportItemReader.Interface.NotificationEventArgs e)
+        {
+            // Information raised by the datareader is fed into this method. Move this information into 
+            // the notifcation panel
         }
         #endregion
 
