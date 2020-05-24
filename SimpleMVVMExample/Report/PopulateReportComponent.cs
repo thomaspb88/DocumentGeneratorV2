@@ -8,7 +8,7 @@ namespace DocumentGenerator
 {
     public static class PopulateReportComponent
     {
-        //TODO Move this logic into each report component.
+        //TODO Move this logic into each report component. Here
 
         private static Func<IReportComponent, XmlNode, IReportComponent> ParseText = (t, x) =>
         {
